@@ -1,3 +1,5 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/1c3d4f9f17d9514df0ec/maintainability)](https://codeclimate.com/github/flexper/next-protected-auth/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/1c3d4f9f17d9514df0ec/test_coverage)](https://codeclimate.com/github/flexper/next-protected-auth/test_coverage) ![npm](https://img.shields.io/npm/v/next-protected-auth) ![npm](https://img.shields.io/npm/dm/next-protected-auth) ![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/next-protected-auth) ![NPM](https://img.shields.io/npm/l/next-protected-auth)
+
 # Next Protected Auth
 
 Add protected routes to Next.js
@@ -26,7 +28,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 export default MyApp;
 
 // pages/auth/index.tsx
-import { NextAuthProtectedCallback } from '../../src';
+import { NextAuthProtectedCallback } from 'next-protected-auth';
 
 export default NextAuthProtectedCallback({
   callback: () => {
@@ -37,7 +39,7 @@ export default NextAuthProtectedCallback({
 export default AuthCallback;
 
 // pages/auth/login.tsx
-import { NextAuthProtectedLogin } from '../../src';
+import { NextAuthProtectedLogin } from 'next-protected-auth';
 
 export default NextAuthProtectedLogin({
   callback: () => {
@@ -48,7 +50,7 @@ export default NextAuthProtectedLogin({
 export default AuthCallback;
 
 // pages/auth/logout.tsx
-import { NextAuthProtectedLogout } from '../../src';
+import { NextAuthProtectedLogout } from 'next-protected-auth';
 
 export default NextAuthProtectedLogout({
   preCallback: () => {
