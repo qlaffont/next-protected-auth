@@ -61,7 +61,7 @@
     "@jest/globals": "25.5.2",
     "@size-limit/preset-small-lib": "8.1.0",
     "@testing-library/jest-dom": "5.16.5",
-    "@testing-library/react": "13.3.0",
+    "@testing-library/react": "13.4.0",
     "@types/react": "18.0.20",
     "@typescript-eslint/eslint-plugin": "5.36.1",
     "@typescript-eslint/parser": "5.36.1",

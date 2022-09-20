@@ -4,7 +4,7 @@ specifiers:
   '@jest/globals': 25.5.2
   '@size-limit/preset-small-lib': 8.1.0
   '@testing-library/jest-dom': 5.16.5
-  '@testing-library/react': 13.3.0
+  '@testing-library/react': 13.4.0
   '@types/react': 18.0.20
   '@typescript-eslint/eslint-plugin': 5.36.1
   '@typescript-eslint/parser': 5.36.1
@@ -35,7 +35,7 @@ devDependencies:
   '@jest/globals': 25.5.2
   '@size-limit/preset-small-lib': 8.1.0_size-limit@8.1.0
   '@testing-library/jest-dom': 5.16.5
-  '@testing-library/react': 13.3.0_biqbaboplfbrettd7655fr4n2y
+  '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
   '@types/react': 18.0.20
   '@typescript-eslint/eslint-plugin': 5.36.1_5yaldr7ufaxklgwfry2cdtpynu
   '@typescript-eslint/parser': 5.36.1_irgkl5vooow2ydyo6aokmferha
@@ -1866,8 +1866,8 @@ packages:
       redent: 3.0.0
     dev: true
 
-  /@testing-library/react/13.3.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-DB79aA426+deFgGSjnf5grczDPiL4taK3hFaa+M5q7q20Kcve9eQottOG5kZ74KEr55v0tU2CQormSSDK87zYQ==}
+  /@testing-library/react/13.4.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-sXOGON+WNTh3MLE9rve97ftaZukN3oNf2KjDy7YTx6hcTO2uuLHuCGynMDhFwGw/jYf4OJ2Qk0i4i79qMNNkyw==}
     engines: {node: '>=12'}
     peerDependencies:
       react: ^18.0.0
@@ -6510,7 +6510,7 @@ packages:
     dev: true
 
   /lz-string/1.4.4:
-    resolution: {integrity: sha1-wNjq82BZ9wV5bh40SBHPTEmNOiY=}
+    resolution: {integrity: sha512-0ckx7ZHRPqb0oUm8zNr+90mtf9DQB60H1wMCjBtfi62Kl3a7JbHob6gA2bC+xRvZoOL+1hzUK8jeuEIQE8svEQ==}
     hasBin: true
     dev: true
 
