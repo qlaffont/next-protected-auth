@@ -1,0 +1,88 @@
+{
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flexper/next-protected-auth.git"
+  },
+  "bugs": {
+    "url": "https://github.com/flexper/next-protected-auth/issues",
+    "email": "contact@flexper.fr"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "eslint src test",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "next-protected-auth",
+  "author": "Flexper",
+  "module": "dist/next-protected-auth.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/next-protected-auth.cjs.production.min.js",
+      "limit": "300 KB"
+    },
+    {
+      "path": "dist/next-protected-auth.esm.js",
+      "limit": "200 KB"
+    }
+  ],
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": [
+      "lcov"
+    ]
+  },
+  "devDependencies": {
+    "@jest/globals": "^25.5.2",
+    "@size-limit/preset-small-lib": "8.0.1",
+    "@testing-library/jest-dom": "5.16.5",
+    "@testing-library/react": "13.3.0",
+    "@types/react": "18.0.18",
+    "@typescript-eslint/eslint-plugin": "5.36.1",
+    "@typescript-eslint/parser": "5.36.1",
+    "eslint": "8.23.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-simple-import-sort": "7.0.0",
+    "husky": "8.0.1",
+    "np": "7.6.2",
+    "prettier": "2.7.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "size-limit": "8.0.1",
+    "tsdx": "0.14.1",
+    "tslib": "2.4.0",
+    "typescript": "4.8.2"
+  },
+  "dependencies": {
+    "next": "^12.3.0",
+    "react-test-renderer": "^18.2.0",
+    "usehooks-ts": "^2.6.0"
+  }
+}
