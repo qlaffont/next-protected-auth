@@ -72,6 +72,7 @@ export default NextAuthProtectedLogout({
 | Field Name | Type                             | Description                                                         |
 | ---------- | -------------------------------- | ------------------------------------------------------------------- |
 | callback   | VoidFunction / AsyncVoidFunction | Specify a callback after login (generally redirect to oauth portal) |
+| authCallbackURL   | string | Specify auth callback url in case of accessToken already exist  |
 
 Return: React Component
 
@@ -107,6 +108,7 @@ Return: React Component
 | loginURL        | string                              | Endpoint for login (ex: /auth/login)                     |
 | authCallbackURL | string                              | Endpoint for auth callback (ex: /auth)                   |
 | renewTokenFct   | (oldAccessToken?: string) => string | Function who will run to renew token (ex: refresh token) |
+| verifyTokenFct   | (accessToken?: string) => string | Function who test accessToken validity (ex: verify JWT token expiration) |
 
 Return: Hook who need to be use to pages/_app.tsx
 

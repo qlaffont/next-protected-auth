@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-//@ts-nocheck
 import '@testing-library/jest-dom';
 
 import {
@@ -49,6 +48,7 @@ describe('next-protected-auth', () => {
         callback: () => {
           console.log('hello');
         },
+        authCallbackURL: '/auth',
       });
 
       render(<Cmp />);
@@ -64,9 +64,10 @@ describe('next-protected-auth', () => {
       console.log = jest.fn();
 
       const Cmp = NextAuthProtectedLogin({
-        callback: () => {
+        callback: async () => {
           console.log('hello');
         },
+        authCallbackURL: '/auth',
       });
 
       render(<Cmp />);
@@ -74,19 +75,46 @@ describe('next-protected-auth', () => {
       expect(console.log).toHaveBeenCalledWith('hello');
       expect(localStorage.getItem('redirectURL')).toBe(`"test"`);
     });
+
+    it('should be able to redirect to callback if accessToken is existing', () => {
+      const useRouter = jest.spyOn(require('next/router'), 'useRouter');
+      const router = { push: jest.fn(), query: { redirectURL: 'test' } };
+      useRouter.mockReturnValue(router);
+
+      localStorage.setItem('accessToken', '"test"');
+
+      const Cmp = NextAuthProtectedLogin({
+        callback: () => {
+          console.log('hello');
+        },
+        authCallbackURL: '/auth',
+      });
+
+      render(<Cmp />);
+
+      expect(router.push).toHaveBeenCalledWith('/auth');
+    });
   });
 
   describe('NextAuthProtectedLogout', () => {
+    //@ts-ignore
+    let container;
+
     beforeEach(() => {
       localStorage.removeItem('accessToken');
       localStorage.removeItem('redirectURL');
+      container = document.createElement('div');
+      document.body.appendChild(container);
     });
 
     afterEach(() => {
+      //@ts-ignore
+      document.body.removeChild(container);
+      container = null;
       cleanup();
     });
 
-    it('should be able to execute call callback at the end and preCallback at the beginning', () => {
+    it('should be able to execute call callback at the end and preCallback at the beginning', async () => {
       const useRouter = jest.spyOn(require('next/router'), 'useRouter');
       const router = { push: jest.fn(), query: {} };
       useRouter.mockReturnValue(router);
@@ -102,10 +130,15 @@ describe('next-protected-auth', () => {
         },
       });
 
-      render(<Cmp />);
+      act(() => {
+        render(<Cmp />);
+      });
 
-      expect(console.log).toHaveBeenCalledWith('pre-hello');
-      expect(console.log).toHaveBeenCalledWith('hello');
+      await waitFor(() => {
+        expect(console.log).toHaveBeenCalledTimes(2);
+        expect(console.log).toHaveBeenCalledWith('pre-hello');
+        expect(console.log).toHaveBeenCalledWith('hello');
+      });
     });
   });
 
@@ -125,6 +158,57 @@ describe('next-protected-auth', () => {
       document.body.removeChild(container);
       container = null;
       cleanup();
+    });
+
+    it('should be able to execute noTokenCallback', async () => {
+      const useRouter = jest.spyOn(require('next/router'), 'useRouter');
+      const router = { push: jest.fn(), query: {} };
+      useRouter.mockReturnValue(router);
+      console.log = jest.fn();
+
+      localStorage.setItem('redirectURL', `"/test"`);
+
+      const Cmp = NextAuthProtectedCallback({
+        noTokenCallback: (redirectURL) => {
+          console.log(redirectURL);
+        },
+      });
+
+      act(() => {
+        render(<Cmp />);
+      });
+
+      await waitFor(() => {
+        expect(localStorage.getItem('redirectURL')).toBe(`undefined`);
+
+        expect(console.log).toHaveBeenCalledWith('/test');
+      });
+    });
+
+    it('should be able to save accessToken and execute callback', async () => {
+      const useRouter = jest.spyOn(require('next/router'), 'useRouter');
+      const router = { push: jest.fn(), query: { accessToken: 'toto' } };
+      useRouter.mockReturnValue(router);
+      console.log = jest.fn();
+
+      localStorage.setItem('redirectURL', `"/test"`);
+
+      const Cmp = NextAuthProtectedCallback({
+        callback: (redirectURL) => {
+          console.log(redirectURL);
+        },
+      });
+
+      act(() => {
+        render(<Cmp />);
+      });
+
+      await waitFor(() => {
+        expect(localStorage.getItem('accessToken')).toBe(`"toto"`);
+        expect(localStorage.getItem('redirectURL')).toBe(`undefined`);
+
+        expect(console.log).toHaveBeenCalledWith('/test');
+      });
     });
 
     it('should be able to save accessToken and execute callback', async () => {
@@ -179,11 +263,13 @@ describe('next-protected-auth', () => {
   });
 
   describe('useNextAuthProtected', () => {
+    //@ts-ignore
     let container;
 
     beforeEach(() => {
       localStorage.removeItem('accessToken');
       localStorage.removeItem('redirectURL');
+      //@ts-ignore
       container = document.createElement('div');
       document.body.appendChild(container);
     });
@@ -191,6 +277,7 @@ describe('next-protected-auth', () => {
     afterEach(() => {
       //@ts-ignore
       document.body.removeChild(container);
+      //@ts-ignore
       container = null;
       cleanup();
     });
@@ -217,6 +304,7 @@ describe('next-protected-auth', () => {
         return <>{isConnected ? 'true' : 'false'}</>;
       };
 
+      //@ts-ignore
       let result;
 
       act(() => {
@@ -224,6 +312,7 @@ describe('next-protected-auth', () => {
       });
 
       await waitFor(() => {
+        //@ts-ignore
         expect(result.asFragment()).toMatchSnapshot();
       });
     });
@@ -239,7 +328,6 @@ describe('next-protected-auth', () => {
 
       const Cmp = () => {
         const isConnected = useNextAuthProtected({
-          publicURLs: ['/'],
           loginURL: '/auth/login',
           authCallbackURL: '/auth',
           renewTokenFct: () => {
@@ -261,7 +349,7 @@ describe('next-protected-auth', () => {
       });
     });
 
-    it('should be able to do nothing if user is not connected', async () => {
+    it('should be able to do nothing if user is connected', async () => {
       const useRouter = jest.spyOn(require('next/router'), 'useRouter');
       const router = {
         push: jest.fn(),
@@ -289,6 +377,44 @@ describe('next-protected-auth', () => {
 
       await waitFor(() => {
         expect(router.push).not.toHaveBeenCalled();
+      });
+    });
+
+    it('should be able to verify access token on boot', async () => {
+      const useRouter = jest.spyOn(require('next/router'), 'useRouter');
+      const router = {
+        push: jest.fn(),
+        query: {},
+        asPath: '/test',
+      };
+      useRouter.mockReturnValue(router);
+
+      localStorage.setItem('accessToken', '"test"');
+
+      const Cmp = () => {
+        const isConnected = useNextAuthProtected({
+          publicURLs: ['/'],
+          loginURL: '/auth/login',
+          authCallbackURL: '/auth',
+          verifyTokenFct: (accessToken) => {
+            return accessToken === 'toto';
+          },
+          renewTokenFct: () => {
+            return 'newToken';
+          },
+        });
+
+        return <>{isConnected ? 'true' : 'false'}</>;
+      };
+
+      act(() => {
+        render(<Cmp />);
+      });
+
+      await waitFor(() => {
+        expect(router.push).toHaveBeenCalledWith(
+          `/auth/login?redirectURL=${encodeURIComponent('/test')}`
+        );
       });
     });
   });
