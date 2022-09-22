@@ -5,7 +5,7 @@ specifiers:
   '@size-limit/preset-small-lib': 8.1.0
   '@testing-library/jest-dom': 5.16.5
   '@testing-library/react': 13.4.0
-  '@types/react': 18.0.20
+  '@types/react': 18.0.21
   '@typescript-eslint/eslint-plugin': 5.38.0
   '@typescript-eslint/parser': 5.38.0
   eslint: 8.23.1
@@ -36,7 +36,7 @@ devDependencies:
   '@size-limit/preset-small-lib': 8.1.0_size-limit@8.1.0
   '@testing-library/jest-dom': 5.16.5
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
-  '@types/react': 18.0.20
+  '@types/react': 18.0.21
   '@typescript-eslint/eslint-plugin': 5.38.0_wsb62dxj2oqwgas4kadjymcmry
   '@typescript-eslint/parser': 5.38.0_irgkl5vooow2ydyo6aokmferha
   eslint: 8.23.1
@@ -2146,11 +2146,11 @@ packages:
   /@types/react-dom/18.0.2:
     resolution: {integrity: sha512-UxeS+Wtj5bvLRREz9tIgsK4ntCuLDo0EcAcACgw3E+9wE8ePDr9uQpq53MfcyxyIS55xJ+0B6mDS8c4qkkHLBg==}
     dependencies:
-      '@types/react': 18.0.20
+      '@types/react': 18.0.21
     dev: true
 
-  /@types/react/18.0.20:
-    resolution: {integrity: sha512-MWul1teSPxujEHVwZl4a5HxQ9vVNsjTchVA+xRqv/VYGCuKGAU6UhfrTdF5aBefwD1BHUD8i/zq+O/vyCm/FrA==}
+  /@types/react/18.0.21:
+    resolution: {integrity: sha512-7QUCOxvFgnD5Jk8ZKlUAhVcRj7GuJRjnjjiY/IUBWKgOlnvDvTMLD4RTF7NPyVmbRhNrbomZiOepg7M/2Kj1mA==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
