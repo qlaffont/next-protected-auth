@@ -151,7 +151,7 @@ export const useNextAuthProtected = ({
   publicURLs?: string[];
   loginURL: string;
   authCallbackURL: string;
-  renewTokenFct: (oldAccessToken?: string) => string;
+  renewTokenFct: (oldAccessToken?: string) => string | Promise<string>;
 }) => {
   const router = useRouter();
   const [, setRedirectURL] = useLocalStorage<string | undefined>(
