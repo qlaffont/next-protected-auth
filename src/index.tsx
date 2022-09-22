@@ -60,6 +60,7 @@ export const NextAuthProtectedLogin =
             localStorage.getItem(keyAccessToken) !== 'undefined'
           ) {
             router.push(authCallbackURL);
+            return;
           }
 
           if (router.query.redirectURL) {
