@@ -8,7 +8,7 @@ export const currentURLIsAllowed = (url: string, config: string[]): boolean => {
   currentUrl = currentUrl.split('?')[0];
 
   // Remove last slash to be sure to have same url
-  if (currentUrl.slice(-1) === '/') {
+  if (currentUrl !== '/' && currentUrl.slice(-1) === '/') {
     currentUrl = currentUrl.slice(0, -1);
   }
 

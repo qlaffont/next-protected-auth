@@ -55,7 +55,10 @@ export const NextAuthProtectedLogin =
     useEffect(() => {
       if (router.query && isBrowser && setRedirectURL) {
         (async () => {
-          if (localStorage.getItem(keyAccessToken) !== null) {
+          if (
+            localStorage.getItem(keyAccessToken) !== null &&
+            localStorage.getItem(keyAccessToken) !== 'undefined'
+          ) {
             router.push(authCallbackURL);
           }
 
