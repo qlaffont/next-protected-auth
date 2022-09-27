@@ -7,7 +7,7 @@ import { currentURLIsAllowed } from './currentURLIsAllowed';
 
 type AsyncVoidFunction = () => Promise<void>;
 
-const getAndSaveAccessToken = async ({
+export const getAndSaveAccessToken = async ({
   renewTokenFct,
   accessToken,
 }: {
