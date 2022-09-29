@@ -53,7 +53,10 @@ export const NextAuthProtectedLogin =
     const { isBrowser } = useSsr();
 
     useEffect(() => {
-      if (router.query && isBrowser && setRedirectURL) {
+      if (isBrowser && setRedirectURL) {
+        //Can't use router it seems he don't have enough time to parse query here
+        const currentUrl = new URL(window.location.toString());
+
         (async () => {
           if (
             localStorage.getItem(keyAccessToken) !== null &&
@@ -63,14 +66,16 @@ export const NextAuthProtectedLogin =
             return;
           }
 
-          if (router.query.redirectURL) {
-            setRedirectURL(router.query.redirectURL as string);
+          if (currentUrl.searchParams.get('redirectURL')) {
+            setRedirectURL(
+              currentUrl.searchParams.get('redirectURL') as string
+            );
           }
 
           callback && (await callback());
         })();
       }
-    }, [router.query, isBrowser, setRedirectURL]);
+    }, [isBrowser, setRedirectURL]);
 
     return (
       <>
@@ -131,7 +136,6 @@ export const NextAuthProtectedCallback =
     noTokenCallback?: (redirectURL?: string) => void | Promise<void>;
   }) =>
   () => {
-    const router = useRouter();
     const { isBrowser } = useSsr();
     const [redirectURL, setRedirectURL] = useLocalStorage<string | undefined>(
       keyRedirectUrl,
@@ -140,10 +144,12 @@ export const NextAuthProtectedCallback =
 
     useEffect(() => {
       if (isBrowser && setRedirectURL) {
-        if (router.query.accessToken) {
+        //Can't use router it seems he don't have enough time to parse query here
+        const currentUrl = new URL(window.location.toString());
+        if (currentUrl.searchParams.get('accessToken')) {
           (async () => {
             await getAndSaveAccessToken({
-              accessToken: router.query.accessToken as string,
+              accessToken: currentUrl.searchParams.get('accessToken') as string,
             });
 
             setRedirectURL(undefined);
@@ -159,7 +165,7 @@ export const NextAuthProtectedCallback =
           })();
         }
       }
-    }, [isBrowser, router.query, setRedirectURL]);
+    }, [isBrowser, setRedirectURL]);
 
     return (
       <>
