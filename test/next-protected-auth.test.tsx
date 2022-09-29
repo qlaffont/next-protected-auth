@@ -13,9 +13,12 @@ import { act, cleanup, render, waitFor } from '@testing-library/react';
 import React from 'react';
 
 import {
+  getAccessToken,
+  getAndSaveAccessToken,
   NextAuthProtectedCallback,
   NextAuthProtectedLogin,
   NextAuthProtectedLogout,
+  removeAccessToken,
   useNextAuthProtected,
 } from '../src';
 
@@ -25,6 +28,59 @@ describe('next-protected-auth', () => {
     expect(NextAuthProtectedLogin).toBeDefined();
     expect(NextAuthProtectedLogout).toBeDefined();
     expect(useNextAuthProtected).toBeDefined();
+  });
+
+  describe('getAndSaveAccessToken', () => {
+    beforeEach(() => {
+      localStorage.removeItem('accessToken');
+    });
+
+    it('should be able to save accessToken if provided', async () => {
+      await getAndSaveAccessToken({ accessToken: 'true' });
+
+      expect(localStorage.getItem('accessToken')).toBe('"true"');
+    });
+
+    it('should be able to do nothing if no param', async () => {
+      await getAndSaveAccessToken({});
+
+      expect(localStorage.getItem('accessToken')).not.toBe('"true"');
+    });
+
+    it('should be able to execute renewTokenFct', async () => {
+      const renewTokenFct = jest.fn(() => 'toto');
+      //@ts-ignore
+      await getAndSaveAccessToken({ renewTokenFct });
+
+      expect(renewTokenFct).toHaveBeenCalled();
+      expect(localStorage.getItem('accessToken')).toBe('"toto"');
+    });
+  });
+
+  describe('getAccessToken', () => {
+    beforeEach(() => {
+      localStorage.removeItem('accessToken');
+    });
+
+    it('should be able to fetch accessToken if provided', async () => {
+      localStorage.setItem('accessToken', '"toto"');
+
+      expect(getAccessToken()).toBe('toto');
+    });
+  });
+
+  describe('removeAccessToken', () => {
+    beforeEach(() => {
+      localStorage.removeItem('accessToken');
+    });
+
+    it('should be able to fetch accessToken if provided', async () => {
+      localStorage.setItem('accessToken', 'toto');
+
+      removeAccessToken();
+
+      expect(getAccessToken()).toBe(undefined);
+    });
   });
 
   describe('NextAuthProtectedLogin', () => {

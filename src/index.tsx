@@ -7,6 +7,9 @@ import { currentURLIsAllowed } from './currentURLIsAllowed';
 
 type AsyncVoidFunction = () => Promise<void>;
 
+const keyAccessToken = 'accessToken';
+const keyRedirectUrl = 'redirectURL';
+
 export const getAndSaveAccessToken = async ({
   renewTokenFct,
   accessToken,
@@ -33,8 +36,13 @@ export const getAndSaveAccessToken = async ({
   return false;
 };
 
-const keyAccessToken = 'accessToken';
-const keyRedirectUrl = 'redirectURL';
+export const getAccessToken = () => {
+  const value = localStorage.getItem(keyAccessToken);
+
+  return value === 'undefined' || !value ? undefined : JSON.parse(value);
+};
+
+export const removeAccessToken = () => localStorage.removeItem(keyAccessToken);
 
 export const NextAuthProtectedLogin =
   ({
