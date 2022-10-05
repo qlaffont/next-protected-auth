@@ -9,7 +9,13 @@ import {
   it,
   jest,
 } from '@jest/globals';
-import { act, cleanup, render, waitFor } from '@testing-library/react';
+import {
+  act,
+  cleanup,
+  render,
+  renderHook,
+  waitFor,
+} from '@testing-library/react';
 import React from 'react';
 
 import {
@@ -18,8 +24,10 @@ import {
   NextAuthProtectedCallback,
   NextAuthProtectedLogin,
   NextAuthProtectedLogout,
+  NextAuthProvider,
   removeAccessToken,
   useNextAuthProtected,
+  useNextAuthProtectedHandler,
 } from '../src';
 
 describe('next-protected-auth', () => {
@@ -27,7 +35,7 @@ describe('next-protected-auth', () => {
     expect(NextAuthProtectedCallback).toBeDefined();
     expect(NextAuthProtectedLogin).toBeDefined();
     expect(NextAuthProtectedLogout).toBeDefined();
-    expect(useNextAuthProtected).toBeDefined();
+    expect(useNextAuthProtectedHandler).toBeDefined();
   });
 
   describe('getAndSaveAccessToken', () => {
@@ -305,6 +313,20 @@ describe('next-protected-auth', () => {
   });
 
   describe('useNextAuthProtected', () => {
+    it('should be able to to tell by default user is not connected', () => {
+      //@ts-ignore
+      const wrapper = ({ children }) => (
+        <NextAuthProvider>{children}</NextAuthProvider>
+      );
+      const { result } = renderHook(() => useNextAuthProtected(), {
+        wrapper,
+      });
+
+      expect(result.current.isConnected).toStrictEqual(false);
+    });
+  });
+
+  describe('useNextAuthProtectedHandler', () => {
     //@ts-ignore
     let container;
 
@@ -324,41 +346,6 @@ describe('next-protected-auth', () => {
       cleanup();
     });
 
-    it('should be able to tell if user is not connected', async () => {
-      const useRouter = jest.spyOn(require('next/router'), 'useRouter');
-      const router = {
-        push: jest.fn(),
-        query: {},
-        asPath: '/',
-      };
-      useRouter.mockReturnValue(router);
-
-      const Cmp = () => {
-        const isConnected = useNextAuthProtected({
-          publicURLs: ['/'],
-          loginURL: '/auth/login',
-          authCallbackURL: '/auth',
-          renewTokenFct: () => {
-            throw 'not available';
-          },
-        });
-
-        return <>{isConnected ? 'true' : 'false'}</>;
-      };
-
-      //@ts-ignore
-      let result;
-
-      act(() => {
-        result = render(<Cmp />);
-      });
-
-      await waitFor(() => {
-        //@ts-ignore
-        expect(result.asFragment()).toMatchSnapshot();
-      });
-    });
-
     it('should be able to redirect to login if user is not connected', async () => {
       const useRouter = jest.spyOn(require('next/router'), 'useRouter');
       const router = {
@@ -369,7 +356,7 @@ describe('next-protected-auth', () => {
       useRouter.mockReturnValue(router);
 
       const Cmp = () => {
-        const isConnected = useNextAuthProtected({
+        useNextAuthProtectedHandler({
           loginURL: '/auth/login',
           authCallbackURL: '/auth',
           renewTokenFct: () => {
@@ -377,11 +364,15 @@ describe('next-protected-auth', () => {
           },
         });
 
-        return <>{isConnected ? 'true' : 'false'}</>;
+        return <></>;
       };
 
       act(() => {
-        render(<Cmp />);
+        render(
+          <NextAuthProvider>
+            <Cmp />
+          </NextAuthProvider>
+        );
       });
 
       await waitFor(() => {
@@ -401,7 +392,7 @@ describe('next-protected-auth', () => {
       useRouter.mockReturnValue(router);
 
       const Cmp = () => {
-        const isConnected = useNextAuthProtected({
+        useNextAuthProtectedHandler({
           publicURLs: ['/'],
           loginURL: '/auth/login',
           authCallbackURL: '/auth',
@@ -410,11 +401,15 @@ describe('next-protected-auth', () => {
           },
         });
 
-        return <>{isConnected ? 'true' : 'false'}</>;
+        return <></>;
       };
 
       act(() => {
-        render(<Cmp />);
+        render(
+          <NextAuthProvider>
+            <Cmp />
+          </NextAuthProvider>
+        );
       });
 
       await waitFor(() => {
@@ -434,7 +429,7 @@ describe('next-protected-auth', () => {
       localStorage.setItem('accessToken', '"test"');
 
       const Cmp = () => {
-        const isConnected = useNextAuthProtected({
+        useNextAuthProtectedHandler({
           publicURLs: ['/'],
           loginURL: '/auth/login',
           authCallbackURL: '/auth',
@@ -446,11 +441,15 @@ describe('next-protected-auth', () => {
           },
         });
 
-        return <>{isConnected ? 'true' : 'false'}</>;
+        return <></>;
       };
 
       act(() => {
-        render(<Cmp />);
+        render(
+          <NextAuthProvider>
+            <Cmp />
+          </NextAuthProvider>
+        );
       });
 
       await waitFor(() => {

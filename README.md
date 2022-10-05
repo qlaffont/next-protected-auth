@@ -6,62 +6,8 @@ Add protected routes to Next.js
 
 ## Usage
 
-```js
-// pages/_app.tsx
-import type { AppProps } from 'next/app';
-import { useNextAuthProtected } from 'next-protected-auth';
+See example folder
 
-function MyApp({ Component, pageProps }: AppProps) {
-  const isConnected = useNextAuthProtected({
-    publicURLs: ['/'],
-    loginURL: '/auth/login',
-    authCallbackURL: '/auth',
-    renewTokenFct: (oldAccessToken) => {
-      //Your function to renew expired access Token
-    },
-  });
-
-  console.log('[USER] isConnected', isConnected);
-
-  return <Component {...pageProps} />;
-}
-export default MyApp;
-
-// pages/auth/index.tsx
-import { NextAuthProtectedCallback } from 'next-protected-auth';
-
-export default NextAuthProtectedCallback({
-  callback: () => {
-    //Your function to redirect user after login
-  },
-});
-
-export default AuthCallback;
-
-// pages/auth/login.tsx
-import { NextAuthProtectedLogin } from 'next-protected-auth';
-
-export default NextAuthProtectedLogin({
-  callback: () => {
-    //Your function to redirect to oauth portal
-  },
-});
-
-export default AuthCallback;
-
-// pages/auth/logout.tsx
-import { NextAuthProtectedLogout } from 'next-protected-auth';
-
-export default NextAuthProtectedLogout({
-  preCallback: () => {
-    //Your function to tell to API that token is expired
-  },
-  callback: () => {
-    //Your function to redirect to home
-  },
-});
-
-```
 
 ## API
 
@@ -98,7 +44,7 @@ Return: React Component
 
 Return: React Component
 
-### useNextAuthProtected
+### useNextAuthProtectedHandler
 
 **Options**
 
@@ -111,6 +57,10 @@ Return: React Component
 | verifyTokenFct  | (accessToken?: string) => string    | Function who test accessToken validity (ex: verify JWT token expiration) |
 
 Return: Hook who need to be use to pages/_app.tsx
+
+### useNextAuthProtected
+
+Return: {isConnected: boolean; setIsConnected: Dispatch<boolean>} // User is connected
 
 ### getAndSaveAccessToken
 

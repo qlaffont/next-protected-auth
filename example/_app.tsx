@@ -2,10 +2,14 @@ import '../styles/globals.css';
 
 import type { AppProps } from 'next/app';
 
-import { useNextAuthProtected } from '../src/index';
+import {
+  NextAuthProvider,
+  useNextAuthProtected,
+  useNextAuthProtectedHandler,
+} from '../src/index';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  const isConnected = useNextAuthProtected({
+function CustomApp({ children }) {
+  useNextAuthProtectedHandler({
     publicURLs: ['/'],
     loginURL: '/auth/login',
     authCallbackURL: '/auth',
@@ -16,9 +20,21 @@ function MyApp({ Component, pageProps }: AppProps) {
     },
   });
 
+  const { isConnected } = useNextAuthProtected();
+
   console.log('[USER] isConnected', isConnected);
 
-  return <Component {...pageProps} />;
+  return <>{children}</>;
 }
+
+const MyApp = ({ Component, pageProps }: AppProps) => {
+  return (
+    <NextAuthProvider>
+      <CustomApp>
+        <Component {...pageProps} />
+      </CustomApp>
+    </NextAuthProvider>
+  );
+};
 
 export default MyApp;

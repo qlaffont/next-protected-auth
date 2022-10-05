@@ -1,6 +1,14 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
+import React, {
+  createContext,
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { useLocalStorage, useSsr } from 'usehooks-ts';
 
 import { currentURLIsAllowed } from './currentURLIsAllowed';
@@ -184,7 +192,35 @@ export const NextAuthProtectedCallback =
     );
   };
 
-export const useNextAuthProtected = ({
+type NextAuthContextType = {
+  isConnected: boolean;
+  setIsConnected: Dispatch<SetStateAction<boolean>>;
+};
+
+export const NextAuthContext = createContext<Partial<NextAuthContextType>>({
+  isConnected: false,
+});
+
+export const NextAuthProvider = ({ children }: { children: ReactNode }) => {
+  const [isConnected, setIsConnected] = useState<boolean>(false);
+
+  return (
+    <NextAuthContext.Provider
+      value={{ isConnected, setIsConnected } as Required<NextAuthContextType>}
+    >
+      {children}
+    </NextAuthContext.Provider>
+  );
+};
+
+export const useNextAuthProtected = (): {
+  isConnected: boolean;
+  setIsConnected: Dispatch<SetStateAction<boolean>>;
+} => {
+  return useContext(NextAuthContext) as Required<NextAuthContextType>;
+};
+
+export const useNextAuthProtectedHandler = ({
   publicURLs = [],
   loginURL,
   authCallbackURL,
@@ -198,6 +234,7 @@ export const useNextAuthProtected = ({
   verifyTokenFct?: (accessToken?: string) => boolean | Promise<boolean>;
 }) => {
   const router = useRouter();
+  const { setIsConnected } = useNextAuthProtected();
   const [accessToken, setAccessToken] = useLocalStorage<string | undefined>(
     keyAccessToken,
     undefined
@@ -205,17 +242,20 @@ export const useNextAuthProtected = ({
   const { isBrowser } = useSsr();
 
   useEffect(() => {
-    if (isBrowser) {
+    if (isBrowser && setIsConnected) {
       (async () => {
         let userIsConnected = !!accessToken;
 
         if (userIsConnected && verifyTokenFct) {
           if (!(await verifyTokenFct(accessToken))) {
             setAccessToken(undefined);
+            setIsConnected(false);
 
             return router.push(
               `${loginURL}?redirectURL=${encodeURIComponent(router.asPath)}`
             );
+          } else {
+            setIsConnected(true);
           }
         }
 
@@ -226,8 +266,11 @@ export const useNextAuthProtected = ({
           // Try to get accessToken
           try {
             userIsConnected = await getAndSaveAccessToken({ renewTokenFct });
+            setIsConnected(true);
             // eslint-disable-next-line no-empty
-          } catch (error) {}
+          } catch (error) {
+            setIsConnected(false);
+          }
         }
 
         //Check if user can access page
@@ -241,6 +284,7 @@ export const useNextAuthProtected = ({
         ) {
           //Redirect to login
           setAccessToken(undefined);
+          setIsConnected(false);
           return router.push(
             `${loginURL}?redirectURL=${encodeURIComponent(router.asPath)}`
           );
@@ -249,7 +293,5 @@ export const useNextAuthProtected = ({
         return;
       })();
     }
-  }, [isBrowser, router.asPath]);
-
-  return !!accessToken;
+  }, [isBrowser, router.asPath, setIsConnected]);
 };
