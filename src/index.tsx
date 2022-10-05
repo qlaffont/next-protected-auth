@@ -255,7 +255,7 @@ export const useNextAuthProtectedHandler = ({
               `${loginURL}?redirectURL=${encodeURIComponent(router.asPath)}`
             );
           } else {
-            setIsConnected(true);
+            userIsConnected = true;
           }
         }
 
@@ -266,11 +266,8 @@ export const useNextAuthProtectedHandler = ({
           // Try to get accessToken
           try {
             userIsConnected = await getAndSaveAccessToken({ renewTokenFct });
-            setIsConnected(true);
             // eslint-disable-next-line no-empty
-          } catch (error) {
-            setIsConnected(false);
-          }
+          } catch (error) {}
         }
 
         //Check if user can access page
@@ -290,6 +287,7 @@ export const useNextAuthProtectedHandler = ({
           );
         }
 
+        setIsConnected(userIsConnected);
         return;
       })();
     }
