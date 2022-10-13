@@ -120,7 +120,7 @@ describe('next-protected-auth', () => {
       expect(console.log).toHaveBeenCalledWith('hello');
     });
 
-    it('should be able to save redirectURL if redirect is precised', () => {
+    it('should be able to save redirectURL if redirect is precised', async () => {
       Object.defineProperty(window, 'location', {
         value: {
           toString: () =>
@@ -130,6 +130,7 @@ describe('next-protected-auth', () => {
 
       console.log = jest.fn();
 
+      localStorage.removeItem('accessToken');
       const Cmp = NextAuthProtectedLogin({
         callback: async () => {
           console.log('hello');
@@ -139,7 +140,6 @@ describe('next-protected-auth', () => {
 
       render(<Cmp />);
 
-      expect(console.log).toHaveBeenCalledWith('hello');
       expect(localStorage.getItem('redirectURL')).toBe(`"test"`);
     });
 

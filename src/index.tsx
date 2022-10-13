@@ -91,7 +91,7 @@ export const NextAuthProtectedLogin =
         const currentUrl = new URL(window.location.toString());
 
         (async () => {
-          if (getAccessToken() !== null && getAccessToken() !== 'undefined') {
+          if (getAccessToken() !== null && getAccessToken() !== undefined) {
             router.push(authCallbackURL);
             return;
           }
