@@ -18,6 +18,33 @@ type AsyncVoidFunction = () => Promise<void>;
 const keyAccessToken = 'accessToken';
 const keyRedirectUrl = 'redirectURL';
 
+export const getAccessToken = () => {
+  if (typeof localStorage === 'undefined') {
+    return undefined;
+  }
+
+  const value = localStorage.getItem(keyAccessToken);
+
+  return value === 'undefined' || !value ? undefined : JSON.parse(value);
+};
+
+export const setAccessToken = (accessToken: string) => {
+  if (typeof localStorage === 'undefined') {
+    return;
+  }
+
+  localStorage.setItem(keyAccessToken, `"${accessToken}"`);
+};
+
+export const removeAccessToken = () => {
+  if (typeof localStorage === 'undefined') {
+    return;
+  }
+
+  localStorage.removeItem(keyAccessToken);
+  return;
+};
+
 export const getAndSaveAccessToken = async ({
   renewTokenFct,
   accessToken,
@@ -27,30 +54,20 @@ export const getAndSaveAccessToken = async ({
 }) => {
   if (!accessToken && renewTokenFct) {
     try {
-      const accessToken = await renewTokenFct(
-        localStorage.getItem(keyAccessToken) ?? undefined
-      );
-      localStorage.setItem(keyAccessToken, `"${accessToken}"`);
+      const accessToken = await renewTokenFct(getAccessToken() ?? undefined);
+      setAccessToken(accessToken);
       return true;
     } catch (error) {
       //Impossible to fetch new token redirect to logout
       throw new Error('need to redirect to logout');
     }
   } else if (accessToken) {
-    localStorage.setItem(keyAccessToken, `"${accessToken}"`);
+    setAccessToken(accessToken);
     return true;
   }
 
   return false;
 };
-
-export const getAccessToken = () => {
-  const value = localStorage.getItem(keyAccessToken);
-
-  return value === 'undefined' || !value ? undefined : JSON.parse(value);
-};
-
-export const removeAccessToken = () => localStorage.removeItem(keyAccessToken);
 
 export const NextAuthProtectedLogin =
   ({
@@ -74,10 +91,7 @@ export const NextAuthProtectedLogin =
         const currentUrl = new URL(window.location.toString());
 
         (async () => {
-          if (
-            localStorage.getItem(keyAccessToken) !== null &&
-            localStorage.getItem(keyAccessToken) !== 'undefined'
-          ) {
+          if (getAccessToken() !== null && getAccessToken() !== 'undefined') {
             router.push(authCallbackURL);
             return;
           }
