@@ -243,7 +243,7 @@ export const useNextAuthProtectedHandler = ({
 }: {
   publicURLs?: string[];
   loginURL: string;
-  authCallbackURL: string;
+  authCallbackURL?: string;
   renewTokenFct: (oldAccessToken?: string) => string | Promise<string>;
   verifyTokenFct?: (accessToken?: string) => boolean | Promise<boolean>;
 }) => {
@@ -274,7 +274,10 @@ export const useNextAuthProtectedHandler = ({
         }
 
         if (
-          router.asPath.split('?')[0] !== authCallbackURL &&
+          router.asPath.split('?')[0] !== loginURL &&
+          (authCallbackURL
+            ? router.asPath.split('?')[0] !== authCallbackURL
+            : true) &&
           !userIsConnected
         ) {
           // Try to get accessToken
@@ -290,7 +293,7 @@ export const useNextAuthProtectedHandler = ({
           !currentURLIsAllowed(router.asPath, [
             ...publicURLs,
             loginURL,
-            authCallbackURL,
+            ...(authCallbackURL ? [authCallbackURL] : []),
           ])
         ) {
           //Redirect to login
