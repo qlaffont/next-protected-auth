@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.0.23 (2022-10-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency next to v13 ([a223317](https://github.com/flexper/next-protected-auth/commit/a223317393ea6a03843a0b7f28aaa8280900fca0))
+
 ### 2.0.22 (2022-10-26)
 
 ### 2.0.21 (2022-10-26)
