@@ -256,7 +256,7 @@ export const useNextAuthProtectedHandler = ({
   const { isBrowser } = useSsr();
 
   useEffect(() => {
-    if (isBrowser && setIsConnected) {
+    if (isBrowser && setIsConnected && router.asPath) {
       (async () => {
         let userIsConnected = !!accessToken;
 
@@ -308,5 +308,5 @@ export const useNextAuthProtectedHandler = ({
         return;
       })();
     }
-  }, [isBrowser, router.asPath, setIsConnected]);
+  }, [isBrowser, router?.asPath, setIsConnected]);
 };
