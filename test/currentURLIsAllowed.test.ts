@@ -19,6 +19,12 @@ describe('currentUrlIsAllowed', () => {
     expect(currentURLIsAllowed('/test/', config)).toBe(true);
   });
 
+  it('should validate url with # at the end', async () => {
+    const config = ['/test'];
+
+    expect(currentURLIsAllowed('/test#id', config)).toBe(true);
+  });
+
   it('should validate url with any at the end', async () => {
     const config = ['/test/*'];
 

@@ -5,7 +5,7 @@ export const currentURLIsAllowed = (url: string, config: string[]): boolean => {
   let currentUrl = url;
 
   // Remove Query Params
-  currentUrl = currentUrl.split('?')[0];
+  currentUrl = currentUrl.split('?')[0].split('#')[0];
 
   // Remove last slash to be sure to have same url
   if (currentUrl !== '/' && currentUrl.slice(-1) === '/') {
