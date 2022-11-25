@@ -382,6 +382,42 @@ describe('next-protected-auth', () => {
       });
     });
 
+    it('should be able to not redirect to login if user is not connected and allowNotFound is true', async () => {
+      const useRouter = jest.spyOn(require('next/router'), 'useRouter');
+      const router = {
+        push: jest.fn(),
+        query: {},
+        asPath: '/test',
+        pathname: '/404',
+      };
+      useRouter.mockReturnValue(router);
+
+      const Cmp = () => {
+        useNextAuthProtectedHandler({
+          loginURL: '/auth/login',
+          authCallbackURL: '/auth',
+          renewTokenFct: () => {
+            throw 'not available';
+          },
+          allowNotFound: true,
+        });
+
+        return <></>;
+      };
+
+      act(() => {
+        render(
+          <NextAuthProvider>
+            <Cmp />
+          </NextAuthProvider>
+        );
+      });
+
+      await waitFor(() => {
+        expect(router.push).not.toHaveBeenCalled();
+      });
+    });
+
     it('should be able to do nothing if user is connected', async () => {
       const useRouter = jest.spyOn(require('next/router'), 'useRouter');
       const router = {

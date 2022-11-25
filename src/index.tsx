@@ -240,12 +240,14 @@ export const useNextAuthProtectedHandler = ({
   authCallbackURL,
   renewTokenFct,
   verifyTokenFct,
+  allowNotFound = false,
 }: {
   publicURLs?: string[];
   loginURL: string;
   authCallbackURL?: string;
   renewTokenFct: (oldAccessToken?: string) => string | Promise<string>;
   verifyTokenFct?: (accessToken?: string) => boolean | Promise<boolean>;
+  allowNotFound?: boolean;
 }) => {
   const router = useRouter();
   const { setIsConnected } = useNextAuthProtected();
@@ -294,7 +296,10 @@ export const useNextAuthProtectedHandler = ({
             ...publicURLs,
             loginURL,
             ...(authCallbackURL ? [authCallbackURL] : []),
-          ])
+          ]) &&
+          !(allowNotFound
+            ? ['_error', '/404'].indexOf(router.pathname) !== -1
+            : false)
         ) {
           //Redirect to login
           setAccessToken(undefined);
