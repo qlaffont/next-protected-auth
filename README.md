@@ -55,6 +55,7 @@ Return: React Component
 | authCallbackURL | string                              | Endpoint for auth callback (ex: /auth)                                   |
 | renewTokenFct   | (oldAccessToken?: string) => string | Function who will run to renew token (ex: refresh token)                 |
 | verifyTokenFct  | (accessToken?: string) => string    | Function who test accessToken validity (ex: verify JWT token expiration) |
+| allowNotFound   | boolean?                            | Allow to consult Not found pages in public                               |
 
 Return: Hook who need to be use to pages/_app.tsx
 

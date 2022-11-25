@@ -298,7 +298,7 @@ export const useNextAuthProtectedHandler = ({
             ...(authCallbackURL ? [authCallbackURL] : []),
           ]) &&
           !(allowNotFound
-            ? ['_error', '/404'].indexOf(router.pathname) !== -1
+            ? ['/_error', '/404'].indexOf(router.pathname) !== -1
             : false)
         ) {
           //Redirect to login
