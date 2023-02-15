@@ -58,7 +58,7 @@
     ]
   },
   "devDependencies": {
-    "@jest/globals": "29.4.2",
+    "@jest/globals": "29.4.3",
     "@size-limit/preset-small-lib": "8.2.4",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.4.0",
