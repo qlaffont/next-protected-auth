@@ -4,7 +4,7 @@ specifiers:
   '@jest/globals': 29.4.3
   '@size-limit/preset-small-lib': 8.2.4
   '@testing-library/jest-dom': 5.16.5
-  '@testing-library/react': 13.4.0
+  '@testing-library/react': 14.0.0
   '@types/react': 18.0.28
   '@typescript-eslint/eslint-plugin': 5.52.0
   '@typescript-eslint/parser': 5.52.0
@@ -35,7 +35,7 @@ devDependencies:
   '@jest/globals': 29.4.3
   '@size-limit/preset-small-lib': 8.2.4_size-limit@8.2.4
   '@testing-library/jest-dom': 5.16.5
-  '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
+  '@testing-library/react': 14.0.0_biqbaboplfbrettd7655fr4n2y
   '@types/react': 18.0.28
   '@typescript-eslint/eslint-plugin': 5.52.0_6cfvjsbua5ptj65675bqcn6oza
   '@typescript-eslint/parser': 5.52.0_7kw3g6rralp5ps6mg3uyzz6azm
@@ -2140,13 +2140,13 @@ packages:
       defer-to-connect: 2.0.1
     dev: true
 
-  /@testing-library/dom/8.13.0:
-    resolution: {integrity: sha512-9VHgfIatKNXQNaZTtLnalIy0jNZzY35a4S3oi08YAt9Hv1VsfZ/DfA45lM8D/UhtHBGJ4/lGwp0PZkVndRkoOQ==}
-    engines: {node: '>=12'}
+  /@testing-library/dom/9.0.0:
+    resolution: {integrity: sha512-+/TLgKNFsYUshOY/zXsQOk+PlFQK+eyJ9T13IDVNJEi+M+Un7xlJK+FZKkbGSnf0+7E1G6PlDhkSYQ/GFiruBQ==}
+    engines: {node: '>=14'}
     dependencies:
       '@babel/code-frame': 7.16.7
       '@babel/runtime': 7.17.2
-      '@types/aria-query': 4.2.2
+      '@types/aria-query': 5.0.1
       aria-query: 5.0.0
       chalk: 4.1.2
       dom-accessibility-api: 0.5.13
@@ -2169,22 +2169,22 @@ packages:
       redent: 3.0.0
     dev: true
 
-  /@testing-library/react/13.4.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-sXOGON+WNTh3MLE9rve97ftaZukN3oNf2KjDy7YTx6hcTO2uuLHuCGynMDhFwGw/jYf4OJ2Qk0i4i79qMNNkyw==}
-    engines: {node: '>=12'}
+  /@testing-library/react/14.0.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-S04gSNJbYE30TlIMLTzv6QCTzt9AqIF5y6s6SzVFILNcNvbV/jU96GeiTPillGQo+Ny64M/5PV7klNYYgv5Dfg==}
+    engines: {node: '>=14'}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
     dependencies:
       '@babel/runtime': 7.17.2
-      '@testing-library/dom': 8.13.0
+      '@testing-library/dom': 9.0.0
       '@types/react-dom': 18.0.2
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: true
 
-  /@types/aria-query/4.2.2:
-    resolution: {integrity: sha512-HnYpAE1Y6kRyKM/XkEuiRQhTHvkzMBurTHnpFLYLBGPIylZNPs9jJcuOOYWxPLJCSEtmZT0Y8rHDokKN7rRTig==}
+  /@types/aria-query/5.0.1:
+    resolution: {integrity: sha512-XTIieEY+gvJ39ChLcB4If5zHtPxt3Syj5rgZR+e1ctpmK8NjPf0zFqsz4JpLJT0xla9GFDKjy8Cpu331nrmE1Q==}
     dev: true
 
   /@types/babel__core/7.1.18:
