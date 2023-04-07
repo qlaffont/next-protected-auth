@@ -21,7 +21,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "test": "tsdx test",
+    "test": "jest",
     "lint": "eslint src test",
     "prepare": "tsdx build",
     "size": "size-limit",
@@ -55,13 +55,16 @@
     "collectCoverage": true,
     "coverageReporters": [
       "lcov"
-    ]
+    ],
+    "preset": "ts-jest",
+    "testEnvironment": "jsdom"
   },
   "devDependencies": {
     "@jest/globals": "29.5.0",
     "@size-limit/preset-small-lib": "8.2.4",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "14.0.0",
+    "@types/jest": "^29.5.0",
     "@types/react": "18.0.33",
     "@typescript-eslint/eslint-plugin": "5.57.1",
     "@typescript-eslint/parser": "5.57.1",
@@ -71,18 +74,21 @@
     "eslint-plugin-prettier": "4.2.1",
     "eslint-plugin-simple-import-sort": "10.0.0",
     "husky": "8.0.3",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
     "np": "7.7.0",
     "prettier": "2.8.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "size-limit": "8.2.4",
+    "ts-jest": "^29.1.0",
     "tsdx": "0.14.1",
     "tslib": "2.5.0",
-    "typescript": "4.9.5"
+    "typescript": "5.0.3"
   },
   "dependencies": {
-    "next": "^13.0.0",
+    "next": "^13.3.0",
     "react-test-renderer": "^18.2.0",
-    "usehooks-ts": "^2.6.0"
+    "usehooks-ts": "^2.9.1"
   }
 }
