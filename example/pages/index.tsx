@@ -1,7 +1,8 @@
 import type { NextPage } from 'next';
 
+// Accessible to everyone
 const Home: NextPage = () => {
-  return <>home</>;
+  return <>HomePage</>;
 };
 
 export default Home;

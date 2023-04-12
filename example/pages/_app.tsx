@@ -1,22 +1,24 @@
-import '../styles/globals.css';
-
 import type { AppProps } from 'next/app';
-
 import {
   NextAuthProvider,
   useNextAuthProtected,
   useNextAuthProtectedHandler,
-} from '../src/index';
+} from 'next-protected-auth';
+
+import { refreshToken } from '../src/myAPI'
 
 function CustomApp({ children }) {
   useNextAuthProtectedHandler({
-    publicURLs: ['/'],
-    loginURL: '/auth/login',
-    authCallbackURL: '/auth',
-    renewTokenFct: (oldAccessToken) => {
-      //Your function to renew expired access Token
+    publicURLs: ['/auth/signup', '/'],
+    loginURL: '/auth/signin',
+    renewTokenFct: async (oldAccessToken) => {
+      if (!oldAccessToken) {
+        throw 'not connected';
+      }
 
-      return 'new token or throw error';
+      const { accessToken } = await refreshToken();
+
+      return accessToken as string;
     },
   });
 
