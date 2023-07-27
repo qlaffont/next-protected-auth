@@ -60,7 +60,7 @@
     "testEnvironment": "jsdom"
   },
   "devDependencies": {
-    "@jest/globals": "29.6.1",
+    "@jest/globals": "29.6.2",
     "@size-limit/preset-small-lib": "8.2.6",
     "@testing-library/jest-dom": "5.17.0",
     "@testing-library/react": "14.0.0",
