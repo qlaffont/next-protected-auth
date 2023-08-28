@@ -363,7 +363,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* **deps:** update dependency next to v13 ([a223317](https://github.com/flexper/next-protected-auth/commit/a223317393ea6a03843a0b7f28aaa8280900fca0))
+* **deps:** update dependency next to v13 ([a223317](https://github.com/qlaffont/next-protected-auth/commit/a223317393ea6a03843a0b7f28aaa8280900fca0))
 
 ### 2.0.22 (2022-10-26)
 

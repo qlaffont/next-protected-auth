@@ -5,11 +5,11 @@
   "typings": "dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/flexper/next-protected-auth.git"
+    "url": "https://github.com/qlaffont/next-protected-auth.git"
   },
   "bugs": {
-    "url": "https://github.com/flexper/next-protected-auth/issues",
-    "email": "contact@flexper.fr"
+    "url": "https://github.com/qlaffont/next-protected-auth/issues",
+    "email": "contact@qlaffont.com"
   },
   "files": [
     "dist",
@@ -39,7 +39,7 @@
     "trailingComma": "es5"
   },
   "name": "next-protected-auth",
-  "author": "Flexper",
+  "author": "qlaffont",
   "module": "dist/next-protected-auth.esm.js",
   "size-limit": [
     {

@@ -1,8 +1,8 @@
-[![Maintainability](https://api.codeclimate.com/v1/badges/1c3d4f9f17d9514df0ec/maintainability)](https://codeclimate.com/github/flexper/next-protected-auth/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/1c3d4f9f17d9514df0ec/test_coverage)](https://codeclimate.com/github/flexper/next-protected-auth/test_coverage) ![npm](https://img.shields.io/npm/v/next-protected-auth) ![npm](https://img.shields.io/npm/dm/next-protected-auth) ![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/next-protected-auth) ![NPM](https://img.shields.io/npm/l/next-protected-auth)
+[![Maintainability](https://api.codeclimate.com/v1/badges/1c3d4f9f17d9514df0ec/maintainability)](https://codeclimate.com/github/qlaffont/next-protected-auth/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/1c3d4f9f17d9514df0ec/test_coverage)](https://codeclimate.com/github/qlaffont/next-protected-auth/test_coverage) ![npm](https://img.shields.io/npm/v/next-protected-auth) ![npm](https://img.shields.io/npm/dm/next-protected-auth) ![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/next-protected-auth) ![NPM](https://img.shields.io/npm/l/next-protected-auth)
 
 # Next Protected Auth
 
-Add protected routes to Next.js
+Add protected routes to Next.js. Old Owner: [@flexper](https://github.com/flexper)
 
 ## Usage
 
