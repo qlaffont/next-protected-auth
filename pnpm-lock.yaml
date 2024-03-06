@@ -32,8 +32,8 @@ devDependencies:
     specifier: ^29.5.0
     version: 29.5.12
   '@types/react':
-    specifier: 18.2.63
-    version: 18.2.63
+    specifier: 18.2.64
+    version: 18.2.64
   '@typescript-eslint/eslint-plugin':
     specifier: 7.1.1
     version: 7.1.1(@typescript-eslint/parser@7.1.1)(eslint@8.57.0)(typescript@5.4.2)
@@ -2684,11 +2684,11 @@ packages:
   /@types/react-dom@18.0.2:
     resolution: {integrity: sha512-UxeS+Wtj5bvLRREz9tIgsK4ntCuLDo0EcAcACgw3E+9wE8ePDr9uQpq53MfcyxyIS55xJ+0B6mDS8c4qkkHLBg==}
     dependencies:
-      '@types/react': 18.2.63
+      '@types/react': 18.2.64
     dev: true
 
-  /@types/react@18.2.63:
-    resolution: {integrity: sha512-ppaqODhs15PYL2nGUOaOu2RSCCB4Difu4UFrP4I3NHLloXC/ESQzQMi9nvjfT1+rudd0d2L3fQPJxRSey+rGlQ==}
+  /@types/react@18.2.64:
+    resolution: {integrity: sha512-MlmPvHgjj2p3vZaxbQgFUQFvD8QiZwACfGqEdDSWou5yISWxDQ4/74nCAwsUiX7UFLKZz3BbVSPj+YxeoGGCfg==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
