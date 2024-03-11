@@ -9,7 +9,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { useLocalStorage, useSsr } from 'usehooks-ts';
+import { useIsClient, useLocalStorage } from 'usehooks-ts';
 
 import { currentURLIsAllowed } from './currentURLIsAllowed';
 
@@ -83,7 +83,7 @@ export const NextAuthProtectedLogin =
       keyRedirectUrl,
       undefined
     );
-    const { isBrowser } = useSsr();
+    const isBrowser = useIsClient();
 
     useEffect(() => {
       if (isBrowser && setRedirectURL) {
@@ -125,7 +125,7 @@ export const NextAuthProtectedLogout =
     callback?: VoidFunction | AsyncVoidFunction;
   }) =>
   () => {
-    const { isBrowser } = useSsr();
+    const isBrowser = useIsClient();
     const [, setRedirectURL] = useLocalStorage<string | undefined>(
       keyRedirectUrl,
       undefined
@@ -166,7 +166,7 @@ export const NextAuthProtectedCallback =
     noTokenCallback?: (redirectURL?: string) => void | Promise<void>;
   }) =>
   () => {
-    const { isBrowser } = useSsr();
+    const isBrowser = useIsClient();
     const [redirectURL, setRedirectURL] = useLocalStorage<string | undefined>(
       keyRedirectUrl,
       undefined
@@ -255,7 +255,7 @@ export const useNextAuthProtectedHandler = ({
     keyAccessToken,
     undefined
   );
-  const { isBrowser } = useSsr();
+  const isBrowser = useIsClient();
 
   useEffect(() => {
     if (isBrowser && setIsConnected && router.asPath) {
