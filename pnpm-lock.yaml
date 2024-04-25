@@ -10,13 +10,13 @@ importers:
     dependencies:
       next:
         specifier: ^14.0.0
-        version: 14.2.3(@babel/core@7.17.5)(babel-plugin-macros@2.8.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 14.2.3(@babel/core@7.17.5)(babel-plugin-macros@2.8.0)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)
       react-test-renderer:
         specifier: ^18.2.0
-        version: 18.2.0(react@18.2.0)
+        version: 18.3.0(react@18.3.0)
       usehooks-ts:
         specifier: ^3.0.0
-        version: 3.1.0(react@18.2.0)
+        version: 3.1.0(react@18.3.0)
     devDependencies:
       '@jest/globals':
         specifier: 29.7.0
@@ -29,13 +29,13 @@ importers:
         version: 6.4.2(@jest/globals@29.7.0)(@types/jest@29.5.12)(jest@29.7.0(@types/node@20.11.20)(babel-plugin-macros@2.8.0)(node-notifier@6.0.0))
       '@testing-library/react':
         specifier: 15.0.4
-        version: 15.0.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 15.0.4(react-dom@18.3.0(react@18.3.0))(react@18.3.0)
       '@types/jest':
         specifier: ^29.5.0
         version: 29.5.12
       '@types/react':
-        specifier: 18.2.79
-        version: 18.2.79
+        specifier: 18.3.0
+        version: 18.3.0
       '@typescript-eslint/eslint-plugin':
         specifier: 7.7.1
         version: 7.7.1(@typescript-eslint/parser@7.7.1(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5)
@@ -73,11 +73,11 @@ importers:
         specifier: 3.2.5
         version: 3.2.5
       react:
-        specifier: 18.2.0
-        version: 18.2.0
+        specifier: 18.3.0
+        version: 18.3.0
       react-dom:
-        specifier: 18.2.0
-        version: 18.2.0(react@18.2.0)
+        specifier: 18.3.0
+        version: 18.3.0(react@18.3.0)
       size-limit:
         specifier: 11.1.2
         version: 11.1.2
@@ -1309,8 +1309,8 @@ packages:
   '@types/react-dom@18.0.2':
     resolution: {integrity: sha512-UxeS+Wtj5bvLRREz9tIgsK4ntCuLDo0EcAcACgw3E+9wE8ePDr9uQpq53MfcyxyIS55xJ+0B6mDS8c4qkkHLBg==}
 
-  '@types/react@18.2.79':
-    resolution: {integrity: sha512-RwGAGXPl9kSXwdNTafkOEuFrTBD5SA2B3iEB96xi8+xu5ddUa/cpvyVCSNn+asgLCTHkb5ZxN8gbuibYJi4s1w==}
+  '@types/react@18.3.0':
+    resolution: {integrity: sha512-DiUcKjzE6soLyln8NNZmyhcQjVv+WsUIFSqetMN0p8927OztKT4VTfFTqsbAi5oAGIcgOmOajlfBqyptDDjZRw==}
 
   '@types/resolve@1.17.1':
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
@@ -4546,10 +4546,10 @@ packages:
     resolution: {integrity: sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==}
     hasBin: true
 
-  react-dom@18.2.0:
-    resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
+  react-dom@18.3.0:
+    resolution: {integrity: sha512-zaKdLBftQJnvb7FtDIpZtsAIb2MZU087RM8bRDZU8LVCCFYjPTsDZJNFUWPcVz3HFSN1n/caxi0ca4B/aaVQGQ==}
     peerDependencies:
-      react: ^18.2.0
+      react: ^18.3.0
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -4560,18 +4560,21 @@ packages:
   react-is@18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
 
+  react-is@18.3.0:
+    resolution: {integrity: sha512-wRiUsea88TjKDc4FBEn+sLvIDesp6brMbGWnJGjew2waAc9evdhja/2LvePc898HJbHw0L+MTWy7NhpnELAvLQ==}
+
   react-shallow-renderer@16.15.0:
     resolution: {integrity: sha512-oScf2FqQ9LFVQgA73vr86xl2NaOIX73rh+YFqcOp68CWj56tSfgtGKrEbyhCj0rSijyG9M1CYprTh39fBi5hzA==}
     peerDependencies:
       react: ^16.0.0 || ^17.0.0 || ^18.0.0
 
-  react-test-renderer@18.2.0:
-    resolution: {integrity: sha512-JWD+aQ0lh2gvh4NM3bBM42Kx+XybOxCpgYK7F8ugAlpaTSnWsX+39Z4XkOykGZAHrjwwTZT3x3KxswVWxHPUqA==}
+  react-test-renderer@18.3.0:
+    resolution: {integrity: sha512-eFnJU8sSYq9I6VI8ISrXDm+7F0igeFlTc0Ngq2XCkVasR5AsyJRg8SuwcD9D5E+VvDS2NrYGZ+gKpO43/wIDHw==}
     peerDependencies:
-      react: ^18.2.0
+      react: ^18.3.0
 
-  react@18.2.0:
-    resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
+  react@18.3.0:
+    resolution: {integrity: sha512-RPutkJftSAldDibyrjuku7q11d3oy6wKOyPe5K1HA/HwwrXcEqBdHsLypkC2FFYjP7bPUa6gbzSBhw4sY2JcDg==}
     engines: {node: '>=0.10.0'}
 
   read-package-up@11.0.0:
@@ -4859,8 +4862,8 @@ packages:
     resolution: {integrity: sha512-xAg7SOnEhrm5zI3puOOKyy1OMcMlIJZYNJY7xLBwSze0UjhPLnWfj2GF2EpT0jmzaJKIWKHLsaSSajf35bcYnA==}
     engines: {node: '>=v12.22.7'}
 
-  scheduler@0.23.0:
-    resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
+  scheduler@0.23.1:
+    resolution: {integrity: sha512-5GKS5JGfiah1O38Vfa9srZE4s3wdHbwjlCrvIookrg2FO9aIwKLOJXuJQFlEfNcVSOXuaL2hzDeY20uVXcUtrw==}
 
   scoped-regex@3.0.0:
     resolution: {integrity: sha512-yEsN6TuxZhZ1Tl9iB81frTNS292m0I/IG7+w8lTvfcJQP2x3vnpOoevjBoE3Np5A6KnZM2+RtVenihj9t6NiYg==}
@@ -7224,13 +7227,13 @@ snapshots:
       '@types/jest': 29.5.12
       jest: 29.7.0(@types/node@20.11.20)(babel-plugin-macros@2.8.0)(node-notifier@6.0.0)
 
-  '@testing-library/react@15.0.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+  '@testing-library/react@15.0.4(react-dom@18.3.0(react@18.3.0))(react@18.3.0)':
     dependencies:
       '@babel/runtime': 7.17.2
       '@testing-library/dom': 10.0.0
       '@types/react-dom': 18.0.2
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
+      react: 18.3.0
+      react-dom: 18.3.0(react@18.3.0)
 
   '@tootallnate/once@2.0.0': {}
 
@@ -7318,9 +7321,9 @@ snapshots:
 
   '@types/react-dom@18.0.2':
     dependencies:
-      '@types/react': 18.2.79
+      '@types/react': 18.3.0
 
-  '@types/react@18.2.79':
+  '@types/react@18.3.0':
     dependencies:
       '@types/prop-types': 15.7.5
       csstype: 3.0.11
@@ -10985,7 +10988,7 @@ snapshots:
     dependencies:
       type-fest: 2.19.0
 
-  next@14.2.3(@babel/core@7.17.5)(babel-plugin-macros@2.8.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  next@14.2.3(@babel/core@7.17.5)(babel-plugin-macros@2.8.0)(react-dom@18.3.0(react@18.3.0))(react@18.3.0):
     dependencies:
       '@next/env': 14.2.3
       '@swc/helpers': 0.5.5
@@ -10993,9 +10996,9 @@ snapshots:
       caniuse-lite: 1.0.30001612
       graceful-fs: 4.2.11
       postcss: 8.4.31
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      styled-jsx: 5.1.1(@babel/core@7.17.5)(babel-plugin-macros@2.8.0)(react@18.2.0)
+      react: 18.3.0
+      react-dom: 18.3.0(react@18.3.0)
+      styled-jsx: 5.1.1(@babel/core@7.17.5)(babel-plugin-macros@2.8.0)(react@18.3.0)
     optionalDependencies:
       '@next/swc-darwin-arm64': 14.2.3
       '@next/swc-darwin-x64': 14.2.3
@@ -11478,11 +11481,11 @@ snapshots:
       minimist: 1.2.6
       strip-json-comments: 2.0.1
 
-  react-dom@18.2.0(react@18.2.0):
+  react-dom@18.3.0(react@18.3.0):
     dependencies:
       loose-envify: 1.4.0
-      react: 18.2.0
-      scheduler: 0.23.0
+      react: 18.3.0
+      scheduler: 0.23.1
 
   react-is@16.13.1: {}
 
@@ -11490,20 +11493,22 @@ snapshots:
 
   react-is@18.2.0: {}
 
-  react-shallow-renderer@16.15.0(react@18.2.0):
+  react-is@18.3.0: {}
+
+  react-shallow-renderer@16.15.0(react@18.3.0):
     dependencies:
       object-assign: 4.1.1
-      react: 18.2.0
-      react-is: 18.2.0
+      react: 18.3.0
+      react-is: 18.3.0
 
-  react-test-renderer@18.2.0(react@18.2.0):
+  react-test-renderer@18.3.0(react@18.3.0):
     dependencies:
-      react: 18.2.0
-      react-is: 18.2.0
-      react-shallow-renderer: 16.15.0(react@18.2.0)
-      scheduler: 0.23.0
+      react: 18.3.0
+      react-is: 18.3.0
+      react-shallow-renderer: 16.15.0(react@18.3.0)
+      scheduler: 0.23.1
 
-  react@18.2.0:
+  react@18.3.0:
     dependencies:
       loose-envify: 1.4.0
 
@@ -11827,7 +11832,7 @@ snapshots:
     dependencies:
       xmlchars: 2.2.0
 
-  scheduler@0.23.0:
+  scheduler@0.23.1:
     dependencies:
       loose-envify: 1.4.0
 
@@ -12171,10 +12176,10 @@ snapshots:
 
   strip-json-comments@3.1.1: {}
 
-  styled-jsx@5.1.1(@babel/core@7.17.5)(babel-plugin-macros@2.8.0)(react@18.2.0):
+  styled-jsx@5.1.1(@babel/core@7.17.5)(babel-plugin-macros@2.8.0)(react@18.3.0):
     dependencies:
       client-only: 0.0.1
-      react: 18.2.0
+      react: 18.3.0
     optionalDependencies:
       '@babel/core': 7.17.5
       babel-plugin-macros: 2.8.0
@@ -12577,10 +12582,10 @@ snapshots:
 
   use@3.1.1: {}
 
-  usehooks-ts@3.1.0(react@18.2.0):
+  usehooks-ts@3.1.0(react@18.3.0):
     dependencies:
       lodash.debounce: 4.0.8
-      react: 18.2.0
+      react: 18.3.0
 
   util-deprecate@1.0.2: {}
 
