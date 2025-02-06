@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.0.417 (2025-02-06)
+
+
+### Bug Fixes
+
+* **deps:** update dependency usehooks-ts to v3.1.1 ([#480](https://github.com/qlaffont/next-protected-auth/issues/480)) ([a9fa488](https://github.com/qlaffont/next-protected-auth/commit/a9fa488a0cb58316c8f6e07b176d7f3cccde5090))
+
 ### 2.0.416 (2025-02-03)
 
 ### 2.0.415 (2025-01-23)
