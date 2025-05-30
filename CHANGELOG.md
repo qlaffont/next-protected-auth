@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.0.444 (2025-05-30)
+
+
+### Bug Fixes
+
+* **deps:** update dependency next to v15.3.3 ([#513](https://github.com/qlaffont/next-protected-auth/issues/513)) ([f565be5](https://github.com/qlaffont/next-protected-auth/commit/f565be54b9be3f90bc8815956624f4eb1269f10d))
+
 ### 2.0.443 (2025-05-27)
 
 ### 2.0.442 (2025-05-21)
